@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name:    	Better time-based greetings Widget
-Plugin URI:       http://github/carstingaxion/better-time-based-greeting-widget
-Description:      Show text messages depending on the current time. In the widget options you can add unlimited texts and the corresponding times. Better than the original, because with this you can only define four timeframes.
-Author:      			Carsten Bach
-Version: 					1.0
-Author URI:    		http://github/carstingaxion/
+Plugin Name:    Better time-based greetings Widget
+Plugin URI:     http://github/carstingaxion/better-time-based-greeting-widget
+Description:    Show text messages depending on the current time. In the widget options you can add unlimited texts and the corresponding times. Better than the original, because with this you can only define four timeframes.
+Author:      	Carsten Bach
+Version: 	1.0
+Author URI:    	http://github/carstingaxion/
 */
 
-class time_based_greetings_Widget extends WP_Widget {
+class time_based_greetings_Widget extends WP_Widget {  
 
 		function time_based_greetings_Widget() {
 				$widget_ops = array('classname' => 'time_based_greetings', 'description' => __('Create unlimited time-based greetings for your visitors','time_based_greetings_widget') );
@@ -108,37 +108,36 @@ class time_based_greetings_Widget extends WP_Widget {
 		}
 		
 		function time_based_greetings_js () {  ?>
-      	<script type="text/javascript">
-						jQuery(document).ready(function($) {
-								$.fn.addEle = function(e) {
-												// do not re-load anything
-												e.preventDefault();
-												// count elements to set new id and name-attributes
-												var num     = $(e.target).parent().parent().find('p.timed-greet-element').length;
-												// set the new id- and name-attributes integer
-												var newNum  = parseInt(num) + parseInt(1);
-												// create our new form-fields
-								        var newElem	= $(e.target).parent().prev().clone();
-												// iterate over each input field
-								        newElem.find('input').each(function(index) {
-																// find and replace ID in our clone with new id
-																var idRegExp = new RegExp( '(id_)(\\d+)' ,["i"]);
-  														  $(this).attr( 'id', $(this).attr('id').replace( idRegExp , "id_"+newNum ) );
-                                // find and replace NAME in our clone with new name-id
-                                var nameRegExp = new RegExp( '\\[times\\]\\[(\\d+)\\]' ,["i"]);
-  														  $(this).attr( 'name', $(this).attr('name').replace( nameRegExp , "[times]["+newNum+"]" ) );
-																// empty value
-								                $(this).val('');
-								        });
-												// add form-fields to the DOM
-								        $( newElem ).insertBefore( $(e.target).parent() );
-								}
-								// add element on button click
-								$('.repeat-parent').live("click", function(e) {   $.fn.addEle(e);   });
-						});
-
-				</script>
-				<?php
+	      	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$.fn.addEle = function(e) {
+				// do not re-load anything
+				e.preventDefault();
+				// count elements to set new id and name-attributes
+				var num     = $(e.target).parent().parent().find('p.timed-greet-element').length;
+				// set the new id- and name-attributes integer
+				var newNum  = parseInt(num) + parseInt(1);
+				// create our new form-fields
+				var newElem	= $(e.target).parent().prev().clone();
+				// iterate over each input field
+				newElem.find('input').each(function(index) {
+					// find and replace ID in our clone with new id
+					var idRegExp = new RegExp( '(id_)(\\d+)' ,["i"]);
+	  				$(this).attr( 'id', $(this).attr('id').replace( idRegExp , "id_"+newNum ) );
+	                                // find and replace NAME in our clone with new name-id
+	                                var nameRegExp = new RegExp( '\\[times\\]\\[(\\d+)\\]' ,["i"]);
+	  				$(this).attr( 'name', $(this).attr('name').replace( nameRegExp , "[times]["+newNum+"]" ) );
+					// empty value
+					$(this).val('');
+				});
+				// add form-fields to the DOM
+				$( newElem ).insertBefore( $(e.target).parent() );
+			}
+			// add element on button click
+			$('.repeat-parent').live("click", function(e) {   $.fn.addEle(e);   });
+		});
+		</script>
+		<?php
 		}
 }
 add_action('widgets_init', create_function('', 'return register_widget("time_based_greetings_Widget");'));
