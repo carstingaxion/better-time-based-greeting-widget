@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name:    Better time-based greetings Widget
-Plugin URI:     http://github/carstingaxion/better-time-based-greeting-widget
+Plugin URI:     https://github.com/carstingaxion/Better-time-based-greeting-Widget
 Description:    Show text messages depending on the current time. In the widget options you can add unlimited texts and the corresponding times. Better than the original, because with this you can only define four timeframes.
-Author:      	Carsten Bach
-Version: 	1.0
+Author:      	  Carsten Bach
+Version: 	      1.0
 Author URI:    	http://github/carstingaxion/
 */
 

@@ -40,4 +40,4 @@ nothing to say here ;)
 == Arbitrary section ==
 
 == Frequently Asked Questions ==
-If you are having a feature request for this plugin, drop me a line at [better-time-based-greetings-widget@carsten-bach.de](mailto:better-time-based-greetings-widget@carsten-bach.de).
+If you are having a feature request or bug-reports for this plugin, [open an issue](https://github.com/carstingaxion/Better-time-based-greeting-Widget/issues/new) on github.com.
